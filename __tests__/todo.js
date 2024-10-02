@@ -4,6 +4,7 @@ const { all, markAsComplete, add } = todoList();
 describe("Todolist test suite", () => {
   beforeAll(() => {
     add({
+      
       title: "Test todo",
       completed: false,
       dueDate: new Date().toISOString().split("T")[0],
