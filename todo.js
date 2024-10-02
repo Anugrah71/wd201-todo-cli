@@ -1,6 +1,6 @@
 const todaydate = new Date().toISOString().split("T")[0];
 const todoList = () => {
-  all = [];
+  const all = [];
   const add = (todoItem) => {
     all.push(todoItem);
   };
@@ -9,26 +9,28 @@ const todoList = () => {
   };
 
   const overdue = () => {
-  
-   return all.filter(todo => todo.dueDate < todaydate);
-    };
+    return all.filter((todo) => todo.dueDate < todaydate);
+  };
 
   const dueToday = () => {
-  
-   return all.filter(todo => todo.dueDate === todaydate);
+    return all.filter((todo) => todo.dueDate === todaydate);
   };
 
   const dueLater = () => {
-    
-   return all.filter(todo => todo.dueDate > todaydate);
+    return all.filter((todo) => todo.dueDate > todaydate);
   };
 
   const toDisplayableList = (list) => {
-   return list.map(todo =>{
-    const checkbox = todo.completed ? "[x]" : "[ ]";
-    const displyDate = todo.dueDate === new Date().toISOString().split("T")[0] ? "": `${todo.dueDate}`;
-    return `${checkbox} ${todo.title} ${displyDate}`;
-   }).join("\n");
+    return list
+      .map((todo) => {
+        const checkbox = todo.completed ? "[x]" : "[ ]";
+        const displyDate =
+          todo.dueDate === new Date().toISOString().split("T")[0]
+            ? ""
+            : `${todo.dueDate}`;
+        return `${checkbox} ${todo.title} ${displyDate}`;
+      })
+      .join("\n");
   };
 
   return {
@@ -55,10 +57,10 @@ const formattedDate = (d) => {
 var dateToday = new Date();
 const today = formattedDate(dateToday);
 const yesterday = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() - 1))
+  new Date(new Date().setDate(dateToday.getDate() - 1)),
 );
 const tomorrow = formattedDate(
-  new Date(new Date().setDate(dateToday.getDate() + 1))
+  new Date(new Date().setDate(dateToday.getDate() + 1)),
 );
 
 todos.add({ title: "Submit assignment", dueDate: yesterday, completed: false });
